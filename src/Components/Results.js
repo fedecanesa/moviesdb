@@ -21,12 +21,10 @@ export default class Results extends Component {
                             <div className="result-information">
                                 <h3 className="result-title">{result.name}</h3>
                                 <p className="rating"> Rating: { result.rating.average }</p>
-                                <p>Sumary: <span>
-                                    {result.summary}
-                                </span>
-                                    </p>
+                                <p>Sumary: {result.summary}</p>
                                 <p>Official Site: 
-                                   <a href={result.officialSite}>{result.officialSite}</a> </p> 
+                                   <a href={result.officialSite}>{result.officialSite}</a> 
+                                </p> 
                             </div> 
                         ) 
                     }

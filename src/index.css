@@ -103,4 +103,5 @@ h1 {
 .result-card:hover {
 	background: rgba(182, 153, 152, 0.13);
 	color: #223343;
+	cursor: pointer;
 }
