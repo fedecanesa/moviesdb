@@ -20,20 +20,16 @@ export default class App extends Component {
         this.setState({ [event.target.name]: event.target.value})
     }
 
-    search = (array) => {
-        this.setState({ results: array });
-    }
-
-    popupHnadler = () => {
-
-    }
-
+  
     searchHandler = () => {
         const {search} = this.state;
 
         fetch(`http://localhost:4000/search/shows/${search}`)
         .then( response => response.json() )
-        .then( jsonResponse => this.search(jsonResponse))
+        .then( jsonResponse => {
+            console.log(jsonResponse)
+            this.setState({results: jsonResponse})
+        })
         .catch( error => console.log(error))
     }
 
@@ -44,20 +40,17 @@ export default class App extends Component {
                 <header className="App-header">
                     <h1>Movie API</h1>
                 </header>
-
                 <main>
                     <Search 
                         searchHandler={this.searchHandler} 
                         changeHandler={this.changeHandler}
                     />
                     
-                    {this.state.results.length > 0 && (
+                    {this.state.results && (
                         <Results results={this.state.results}/>
                     )}
-                    {/* <Popup results={this.state.results}/>  */}
 
                 </main> 
-
             </div>
         )
     }
