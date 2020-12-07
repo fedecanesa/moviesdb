@@ -2,7 +2,7 @@ import './App.css';
 import React, { Component } from 'react'
 import Search from "./Components/Search"
 import Results from './Components/Results'
-/* import Popup from './Components/Popup' */
+
 /* import {BrowserRouter as Router, Switch} from "react-router-dom" */
 
 
@@ -26,10 +26,7 @@ export default class App extends Component {
 
         fetch(`http://localhost:4000/search/shows/${search}`)
         .then( response => response.json() )
-        .then( jsonResponse => {
-            console.log(jsonResponse)
-            this.setState({results: jsonResponse})
-        })
+        .then( jsonResponse => this.setState( {results: jsonResponse} ))
         .catch( error => console.log(error))
     }
 
@@ -37,20 +34,17 @@ export default class App extends Component {
         return (
             <div className="App">
             
-                <header className="App-header">
-                    <h1>Movie API</h1>
-                </header>
-                <main>
+                <h1>React Movie Search</h1>
+                    
                     <Search 
                         searchHandler={this.searchHandler} 
                         changeHandler={this.changeHandler}
                     />
                     
                     {this.state.results && (
-                        <Results results={this.state.results}/>
+                        <Results result={this.state.results}/>
                     )}
 
-                </main> 
             </div>
         )
     }

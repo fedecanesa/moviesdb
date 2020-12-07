@@ -9,7 +9,7 @@ export default class Search extends Component {
                 <input 
                     type="text"
                     name="search" 
-                    placeholder="Search a movie" 
+                    placeholder="Search a movie..." 
                     className="searchbox-input" 
                     onChange={this.props.changeHandler}
                 />
